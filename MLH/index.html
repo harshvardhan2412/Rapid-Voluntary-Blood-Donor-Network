@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>MediConnect – Rapid Voluntary Blood Donor Network</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<div class="warn"><b>PROTOTYPE NOTICE</b> · Volunteer coordination prototype only. Not a substitute for 108 / 112 Emergency Medical Services or licensed hospital blood banks.<div class="hl">MP Ambulance: <b>108</b> · National Emergency: <b>112</b> · e-RaktKosh: <b>104</b></div></div>
+<nav><b><svg width="18" height="22" viewBox="0 0 100 100" style="vertical-align:-3px;margin-right:4px" aria-hidden="true"><path d="M50 5C50 5 15 45 15 68a35 35 0 0 0 70 0C85 45 50 5 50 5Z" fill="var(--red)"/></svg>Medi<span>Connect</span></b><a href="#find">Find donors</a><a href="#request">Request blood</a><a href="#track">Track</a><a href="#inbox">Donor inbox</a><a href="#join">Become a donor</a><button class="s tg" id="tg" type="button">Dark mode</button></nav>
+<div class="wrap">
+<header class="hero"><span class="live"><i></i>Live prototype</span><h1>Find compatible blood donors in minutes, not hours.</h1><p class="lead">Pick the patient’s blood group, see who can donate, and reach consenting volunteers nearby. Donors approve every contact, and phone numbers are never shown.</p><div class="cta"><a class="btn" href="#find">Find a donor</a><a class="btn ghost" href="#request">Request blood</a></div></header>
+
+<div class="row" id="stats" style="margin:0 0 14px"></div>
+<section id="find" class="card"><b>Patient’s blood group</b>
+<div class="groups" id="groups"></div>
+<div id="compat" class="meta"></div>
+<div class="row"><div class="f"><label for="from">Distance from (zone)</label><select id="from"></select></div>
+<div class="f"><label for="rad">Max radius: <b id="radv">20</b> km</label><input id="rad" type="range" min="2" max="25" value="20"></div>
+<div class="f"><label for="q">Search donor / locality</label><input id="q" placeholder="e.g. Palasia, O-, Priya"></div>
+<div class="f"><label for="area">Only show area</label><select id="area"></select></div>
+<div class="f"><label>Clinical readiness</label><label class="check" style="margin:8px 0;color:var(--ink);font-weight:600"><input type="checkbox" id="avail" checked> Eligible only (active &amp; ≥90d)</label></div></div></section>
+<h2>Donor directory <span class="meta" id="count"></span></h2>
+<div class="priv" id="priv"></div>
+<div class="grid" id="list"></div>
+
+<h2 id="request">Urgent blood request</h2>
+<form class="card" id="form" onsubmit="return false">
+<div class="row"><div class="f"><label for="pn">Patient name</label><input id="pn" required></div>
+<div class="f"><label for="rg">Blood group needed</label><select id="rg"></select></div>
+<div class="f"><label for="un">Units</label><input id="un" type="number" min="1" max="10" value="1"></div><div class="f"><label for="ur">Urgency</label><select id="ur"><option>Critical (within 2 hrs)</option><option>Urgent (within 24 hrs)</option><option>Planned</option></select></div></div>
+<div class="row"><div class="f"><label for="hp">Hospital</label><input id="hp" required placeholder="e.g. MY Hospital"></div>
+<div class="f"><label for="ra">Area</label><select id="ra"></select></div>
+<div class="f"><label for="vc">Hospital verification ID</label><input id="vc" required placeholder="e.g. doctor’s slip no."></div></div>
+<label class="check"><input type="checkbox" id="cc" required> I confirm this request is genuine. My contact stays hidden from donors until I approve it.</label>
+<button class="p" id="sub">Send urgent request</button></form>
+
+<h2 id="track">Live request tracker</h2>
+<div id="reqs"></div>
+
+<h2 id="inbox">Donor inbox</h2><div class="card"><label for="me">View as donor</label><select id="me"></select><div id="inb"></div></div>
+<h2 id="join">Become a voluntary donor</h2>
+<form class="card" id="jf" onsubmit="return false">
+<div class="row"><div class="f"><label for="jn">First name</label><input id="jn" required></div>
+<div class="f"><label for="jg">Blood group</label><select id="jg"></select></div>
+<div class="f"><label for="ja">Area</label><select id="ja"></select></div><div class="f"><label for="jd">Last donation date</label><input id="jd" type="date" required></div></div>
+<label class="check"><input type="checkbox" id="jnev"> I have never donated blood before</label>
+<label class="check"><input type="checkbox" id="jc" required> I consent to be contacted for urgent blood needs. I can say no to any request and leave at any time.</label>
+<button class="p">Register as donor</button></form>
+<footer>Privacy by design: donors appear by first name, group and area only. Contact happens through donor-approved requests. Demo data is fictional.</footer>
+</div><div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script></body></html>
